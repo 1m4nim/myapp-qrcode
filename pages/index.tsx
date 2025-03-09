@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Input, Button, message } from "antd";
 import { QRCodeCanvas } from "qrcode.react";
+import "rc-picker/es/locale/common";
+import "rc-picker/es/locale/en_US";
 
 export default function Home() {
   const [url, setUrl] = useState("");
