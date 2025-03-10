@@ -1,5 +1,3 @@
-// pages/api/shorten.ts
-
 import { NextApiRequest, NextApiResponse } from "next";
 
 // リクエストのボディの型定義
@@ -13,22 +11,32 @@ const generateShortenedUrl = (longUrl: string): string => {
   return `http://short.ly/${randomString}`;
 };
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   // POSTメソッドだけを許可
   if (req.method === "POST") {
-    // 型定義を使ってbodyを明示的に型付け
-    const { longUrl }: RequestBody = req.body;
+    try {
+      // 型定義を使ってbodyを明示的に型付け
+      const { longUrl }: RequestBody = req.body;
 
-    if (!longUrl) {
-      // 長いURLが提供されていない場合はエラーを返す
-      return res.status(400).json({ error: "Long URL is required" });
+      // longUrlが空または文字列でない場合にエラーを返す
+      if (!longUrl || typeof longUrl !== "string") {
+        return res
+          .status(400)
+          .json({ error: "Long URL is required and should be a valid string" });
+      }
+
+      // longUrlを使用して短縮URLを生成
+      const shortUrl = generateShortenedUrl(longUrl);
+
+      // 成功した場合、短縮URLを返す
+      return res.status(200).json({ shortUrl });
+    } catch (error) {
+      console.error("Error processing the request:", error);
+      return res.status(500).json({ error: "Internal Server Error" });
     }
-
-    // longUrlを使用して短縮URLを生成
-    const shortUrl = generateShortenedUrl(longUrl);
-
-    // 成功した場合、短縮URLを返す
-    return res.status(200).json({ shortUrl });
   }
 
   // 他のメソッドには404エラーを返す
