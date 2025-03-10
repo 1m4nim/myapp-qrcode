@@ -2,9 +2,8 @@
 
 module.exports = {
     experimental: {
-        turboMode: true,  // この設定は無効
-        reactMode: 'concurrent', // Reactの同時実行モード
+        // Turbopackを有効にする設定
+        appDir: true,  // Appディレクトリを有効にする（Turbopackでの利用）
     },
-    reactStrictMode: true, // 開発モードでの厳格なチェック
-    // その他の設定...
+    reactStrictMode: true, // 開発モードで厳格なチェック
 };
