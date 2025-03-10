@@ -7,6 +7,8 @@ interface RequestBody {
 
 // 短縮URLを生成する簡単な関数（例）
 const generateShortenedUrl = (longUrl: string): string => {
+  console.log("Original long URL:", longUrl);
+
   const randomString = Math.random().toString(36).substring(2, 8); // ランダムな文字列を生成
   return `http://short.ly/${randomString}`;
 };

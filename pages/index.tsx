@@ -14,7 +14,7 @@ export default function Home() {
       const res = await fetch("/api/shorten", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ longUrl: url }), // 修正: originalUrl → longUrl
+        body: JSON.stringify({ longUrl: url }),
       });
 
       // APIレスポンスの確認
