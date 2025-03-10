@@ -5,7 +5,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyBXfAQhBeDJXITZAsWA9O9Ky7M3yT5tqeE NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=myapp-qrcode.firebaseapp.com NEXT_PUBLIC_FIREBASE_PROJECT_ID=myapp-qrcode NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=myapp-qrcode.firebasestorage.app NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=764535012831 NEXT_PUBLIC_FIREBASE_APP_ID=1:764535012831:web:26dacb035c99d49e03186a next build",
   "dev": "next dev",
-    "start": "next start",
+    "start": "next start"
   },
   "dependencies": {
     "@ant-design/icons": "^5.6.1",
