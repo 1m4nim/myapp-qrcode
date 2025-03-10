@@ -1,7 +1,7 @@
-// next.config.js
 module.exports = {
-    experimental: {
-        turbopack: true, // Turbopackを有効にする
-    },
-    reactStrictMode: true, // 開発モードで厳格なチェック
+    reactStrictMode: true,  // 必要に応じてReactの厳格モードを有効にする
+    // turbopackを使用しない場合
+    // experimental: {
+    //   turbopack: true,  // この設定を削除またはコメントアウト
+    // },
 };
