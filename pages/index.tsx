@@ -1,28 +1,37 @@
 import { useState } from "react";
 import { Input, Button, message } from "antd";
 import { QRCodeCanvas } from "qrcode.react";
-import "rc-picker/es/locale/common";
-import "rc-picker/es/locale/en_US";
 
 export default function Home() {
-  const [url, setUrl] = useState("");
-  const [shortUrl, setShortUrl] = useState("");
+  const [url, setUrl] = useState(""); // 入力されたURL
+  const [shortUrl, setShortUrl] = useState(""); // 生成された短縮URL
 
+  // handleShorten関数
   const handleShorten = async () => {
     if (!url) return message.error("URLを入力してください");
 
-    const res = await fetch("/api/shorten", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ originalUrl: url }),
-    });
+    try {
+      const res = await fetch("/api/shorten", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ longUrl: url }), // 修正: originalUrl → longUrl
+      });
 
-    const data = await res.json();
-    if (res.ok) {
+      // APIレスポンスの確認
+      if (!res.ok) {
+        throw new Error("サーバーエラーが発生しました");
+      }
+
+      const data = await res.json();
       setShortUrl(data.shortUrl);
       message.success("短縮URLを生成しました！");
-    } else {
-      message.error(data.error);
+    } catch (error: unknown) {
+      // errorがError型かどうかを確認
+      if (error instanceof Error) {
+        message.error(error.message);
+      } else {
+        message.error("予期しないエラーが発生しました");
+      }
     }
   };
 

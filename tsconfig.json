@@ -21,7 +21,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "noUnusedLocals": false // この行を追加
   },
   "include": [
     "next-env.d.ts",
