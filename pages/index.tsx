@@ -6,7 +6,6 @@ export default function Home() {
   const [url, setUrl] = useState(""); // 入力されたURL
   const [shortUrl, setShortUrl] = useState(""); // 生成された短縮URL
 
-  // handleShorten関数
   const handleShorten = async () => {
     if (!url) return message.error("URLを入力してください");
 
@@ -17,7 +16,6 @@ export default function Home() {
         body: JSON.stringify({ longUrl: url }),
       });
 
-      // APIレスポンスの確認
       if (!res.ok) {
         throw new Error("サーバーエラーが発生しました");
       }
@@ -26,7 +24,6 @@ export default function Home() {
       setShortUrl(data.shortUrl);
       message.success("短縮URLを生成しました！");
     } catch (error: unknown) {
-      // errorがError型かどうかを確認
       if (error instanceof Error) {
         message.error(error.message);
       } else {
