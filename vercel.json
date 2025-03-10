@@ -2,9 +2,6 @@
   "build": {
     "env": {
       "NEXT_DISABLE_HOST_CHECK": "true"
-    },
-    "cache": {
-      "includes": ["node_modules/.cache"]
     }
   }
 }
