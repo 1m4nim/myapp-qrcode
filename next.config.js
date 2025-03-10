@@ -1,7 +1,10 @@
 // next.config.js
 module.exports = {
-    webpack: (config, { isServer }) => {
-        // Webpackに関するカスタマイズを削除
-        return config
+    experimental: {
+        turboMode: true, // Turbopackを有効にする
     },
-}
+    webpack: (config) => {
+        // Webpackに関連するカスタム設定を削除
+        return config;
+    }
+};
