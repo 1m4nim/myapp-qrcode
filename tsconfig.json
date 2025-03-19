@@ -5,7 +5,11 @@
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "noEmit": true,
@@ -20,9 +24,13 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "noUnusedLocals": false // この行を追加
+    ,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "next-env.d.ts",
@@ -32,5 +40,7 @@
     "src/**/*",
     "firebase.d.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

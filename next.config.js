@@ -1,9 +1,13 @@
 module.exports = {
     experimental: {
-        appDir: false, // App Router の影響を無効化
-    },
-    compiler: {
-        reactRemoveProperties: true,
-        removeConsole: true,
+        turbo: false,
     },
 };
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    experimental: {
+        turboMode: false,  // turboMode を false にする
+    },
+};
+
+module.exports = nextConfig;
